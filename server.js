@@ -5,6 +5,7 @@ import cors from "cors";
 import rateLimit from "express-rate-limit";
 import {connectDB} from "./db.js";
 
+import authRouter from "./routes/auth.js";
 
 
 
@@ -16,7 +17,7 @@ app.use(morgan("dev"));
 
 app.use(rateLimit({windowMs:1000*60,max:100}));
 
-
+app.use("/",authRouter);
 
 app.get("/check",(req,res)=>
 {
