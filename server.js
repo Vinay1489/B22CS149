@@ -7,6 +7,8 @@ import {connectDB} from "./db.js";
 
 import authRouter from "./routes/auth.js";
 
+import microServiceRouter from "./routes/microService.js";
+
 
 
 dotenv.config();
@@ -18,6 +20,8 @@ app.use(morgan("dev"));
 app.use(rateLimit({windowMs:1000*60,max:100}));
 
 app.use("/",authRouter);
+
+app.use("/",microServiceRouter);
 
 app.get("/check",(req,res)=>
 {
